@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: sms-bot
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn bot:app
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: TWILIO_SID
+        sync: false
+      - key: TWILIO_AUTH
+        sync: false
+      - key: TWILIO_PHONE
+        sync: false
+      - key: WEBHOOK_URL
+        sync: false
+      - key: ADMIN_ID
+        sync: false
